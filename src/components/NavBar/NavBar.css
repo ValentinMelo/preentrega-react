@@ -12,7 +12,7 @@
     background-color: black;
     background: black;
     color: transparent;
-    height: 70px;
+    height: 80px;
     padding: 1em;
     position: sticky;
     top: 0;
@@ -31,15 +31,20 @@
   }
   
 
-  .topnav {
-    display: inline-flex;
+.topnav {
+    display: flex;
     overflow: hidden;
+    margin: auto;
+
   }
 
-  .menu-principal, .titulo {
-    display: inline-flex;
+.titulo {
+margin-right: 100px;
   }
 
-  .menu-principal{
-    margin-left: 40rem;
-  }
+.menu-principal{
+
+margin-left: 100px;
+
+}
+

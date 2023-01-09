@@ -1,12 +1,33 @@
-import React from 'react'
-import './ItemsListContainer.css'
+import { useEffect, useState } from "react"
+import { pedirDatos } from "../../helpers/pedirDatos"
+import ItemList from "../ItemList/ItemList"
+import { useParams } from "react-router-dom"
 
-const ItemsListContainer = (props) => {
+const ItemListContainer = () => {
+
+  const [productos, setProductos] = useState([])
+  const { categoryId } = useParams()
+ 
+  useEffect(() => {
+      pedirDatos()
+          .then((res) => {
+              if (categoryId) {
+                  setProductos( res.filter(prod => prod.category === categoryId) )
+              } else {
+                  setProductos(res)
+              }
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+  }, [categoryId])
+
+
   return (
-    <div className='mensaje-saludo'>
-        <h2 className='saludo'>{props.name}</h2>
-    </div>
+      <div>
+          <ItemList productos={productos}/>
+      </div>
   )
 }
 
-export default ItemsListContainer
+export default ItemListContainer
